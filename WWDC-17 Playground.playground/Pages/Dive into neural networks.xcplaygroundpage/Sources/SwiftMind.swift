@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import Accelerate
-import NNMath
 
 public enum MindError: Error {
     case InvalidInputsError(String)

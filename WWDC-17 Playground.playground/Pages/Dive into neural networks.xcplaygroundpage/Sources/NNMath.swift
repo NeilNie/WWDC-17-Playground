@@ -8,19 +8,23 @@
 
 import Foundation
 
-class NNMath: NSObject {
+public class NNMath: NSObject {
     
     /**
      @brief Apply sigmoid function to a given value
      */
-    class func sigmoid(x: Float) -> Float{
+    public class func sigmoid(x: Float) -> Float{
         return 1 / (1 + powf(Float(M_E), x))
+    }
+    
+    public class func sigmoidD(x: Double) -> Double{
+        return 1 / (1 + pow(M_E, x))
     }
     
     /**
      @brief Apply sigmoid prime function to a given value
      */
-    class func sigmoidPrime(y: Float) -> Float{
+    public class func sigmoidPrime(y: Float) -> Float{
         return y * (1 - y)
     }
 }
