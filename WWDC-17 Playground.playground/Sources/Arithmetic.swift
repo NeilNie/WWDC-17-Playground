@@ -22,6 +22,28 @@
 
 import Accelerate
 
+public func transpose(x: [[Double]]) -> [Double] {
+    let output = [Double]()
+    
+    return output
+}
+
+public func sigmoid(x: [Double]) -> [Double]{
+    var output = x;
+    for i in 0..<x.count{
+        output[i] = NNMath.sigmoidD(x: x[i])
+    }
+    return output
+}
+
+public func sigmoidPrime(x: [Double]) -> [Double]{
+    var output = x;
+    for i in 0..<x.count{
+        output[i] = NNMath.sigmoidPrimed(y: x[i])
+    }
+    return output
+}
+
 // MARK: Sum
 
 public func float(a: [Double]) -> [Float] {

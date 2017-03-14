@@ -167,6 +167,14 @@ public func activate(x: Matrix<Double>) -> Matrix<Double>{
     return output
 }
 
+public func activationPrime(x: Matrix<Double>) -> Matrix<Double>{
+    var output = x;
+    for i in 0..<x.columns * x.rows{
+        output.grid[i] = NNMath.sigmoidPrimed(y: x.grid[i])
+    }
+    return output
+}
+
 // MARK: -
 
 public func add(_ x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {

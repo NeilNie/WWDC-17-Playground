@@ -27,4 +27,7 @@ public class NNMath: NSObject {
     public class func sigmoidPrime(y: Float) -> Float{
         return y * (1 - y)
     }
+    public class func sigmoidPrimed(y: Double) -> Double{
+        return y * (1 - y)
+    }
 }

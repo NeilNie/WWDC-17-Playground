@@ -50,6 +50,7 @@ open class HandwritingView: UIView {
     // MARK: - Actions
     
     func clearScreen(sender: UIButton) {
+        print("cleared")
         mainImageView = nil;
         tempImageView = nil;
     }
@@ -77,7 +78,7 @@ open class HandwritingView: UIView {
     }
 
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+        print("begin writing")
         swiped = false
         if let touch = touches.first {
             lastPoint = touch.location(in: self)
