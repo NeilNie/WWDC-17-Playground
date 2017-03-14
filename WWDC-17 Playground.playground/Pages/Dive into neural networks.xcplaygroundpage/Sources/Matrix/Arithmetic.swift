@@ -24,6 +24,15 @@ import Accelerate
 
 // MARK: Sum
 
+public func float(a: [Double]) -> [Float] {
+    
+    var f = [Float]()
+    for n in a {
+        f.append(Float(n))
+    }
+    return f
+}
+
 public func sum(_ x: [Float]) -> Float {
     var result: Float = 0.0
     vDSP_sve(x, 1, &result, vDSP_Length(x.count))
@@ -345,22 +354,6 @@ public func * (lhs: [Float], rhs: Float) -> [Float] {
 
 public func * (lhs: [Double], rhs: Double) -> [Double] {
     return mul(lhs, y: [Double](repeating: rhs, count: lhs.count))
-}
-
-public func % (lhs: [Float], rhs: [Float]) -> [Float] {
-    return mod(lhs, y: rhs)
-}
-
-public func % (lhs: [Double], rhs: [Double]) -> [Double] {
-    return mod(lhs, y: rhs)
-}
-
-public func % (lhs: [Float], rhs: Float) -> [Float] {
-    return mod(lhs, y: [Float](repeating: rhs, count: lhs.count))
-}
-
-public func % (lhs: [Double], rhs: Double) -> [Double] {
-    return mod(lhs, y: [Double](repeating: rhs, count: lhs.count))
 }
 
 infix operator •

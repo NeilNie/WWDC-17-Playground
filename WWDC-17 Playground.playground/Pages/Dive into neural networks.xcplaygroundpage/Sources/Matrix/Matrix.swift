@@ -30,10 +30,10 @@ public enum MatrixAxies {
 public struct Matrix<T> where T: FloatingPoint, T: ExpressibleByFloatLiteral {
     public typealias Element = T
 
-    let rows: Int
-    let columns: Int
-    var grid: [Element]
-
+    public let rows: Int
+    public let columns: Int
+    public var grid: [Element]
+    
     public init(rows: Int, columns: Int, repeatedValue: Element) {
         self.rows = rows
         self.columns = columns
@@ -243,38 +243,6 @@ public func div(_ x: Matrix<Float>, y: Matrix<Float>) -> Matrix<Float> {
     let yInv = inv(y)
     precondition(x.columns == yInv.rows, "Matrix dimensions not compatible")
     return mul(x, y: yInv)
-}
-
-public func pow(_ x: Matrix<Double>, _ y: Double) -> Matrix<Double> {
-    var result = Matrix<Double>(rows: x.rows, columns: x.columns, repeatedValue: 0.0)
-    result.grid = pow(x.grid, y)
-    return result
-}
-
-public func pow(_ x: Matrix<Float>, _ y: Float) -> Matrix<Float> {
-    var result = Matrix<Float>(rows: x.rows, columns: x.columns, repeatedValue: 0.0)
-    result.grid = pow(x.grid, y)
-    return result
-}
-
-
-public func sum(_ x: Matrix<Double>, axies: MatrixAxies = .column) -> Matrix<Double> {
-    
-    switch axies {
-    case .column:
-        var result = Matrix<Double>(rows: 1, columns: x.columns, repeatedValue: 0.0)
-        for i in 0..<x.columns {
-            result.grid[i] = sum(x[column: i])
-        }
-        return result
-        
-    case .row:
-        var result = Matrix<Double>(rows: x.rows, columns: 1, repeatedValue: 0.0)
-        for i in 0..<x.rows {
-            result.grid[i] = sum(x[row: i])
-        }
-        return result
-    }
 }
 
 public func inv(_ x : Matrix<Float>) -> Matrix<Float> {

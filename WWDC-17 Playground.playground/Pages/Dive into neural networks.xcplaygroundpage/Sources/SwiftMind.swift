@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Accelerate
 
-public enum MindError: Error {
+public enum SwiftMindError: Error {
     case InvalidInputsError(String)
     case InvalidAnswerError(String)
     case InvalidWeightsError(String)
@@ -22,11 +22,11 @@ public final class SwiftMind {
     var momentum: Float
     var dimension: [Int]
     
-    private var weights: Array<[Float]>
+    private var weights: [[Float]]
     private var results: Array<[Float]>
     private var costs: Array<[Float]>
     
-    public init(dimension: [Int], learningRate: Float, momentum: Float, weights: Array<[Float]>) {
+    public init(dimension: [Int], learningRate: Float, momentum: Float, weights: [[Float]]? = nil) {
         
         self.dimension = [Int](repeating: 0, count: dimension.count);
         self.weights = Array.init()
@@ -41,12 +41,13 @@ public final class SwiftMind {
             //add bias node to everything but final layer
             self.dimension[index] = dimension[index] + 1
             //get random weights
-            if weights.count > 0 {
-                self.weights = weights;
+            if (weights != nil) {
+                self.weights = weights!;
             }else{
                 self.weights[index] = self.randWeights(count: dimension[index] * dimension[index + 1])
             }
         }
+        print("mind created")
     }
     
     public func predict(inputs: [Float]) {
@@ -64,7 +65,7 @@ public final class SwiftMind {
     public func forwardFeed(layerIndex: Int, inputs: [Float], weights: [Float]) throws -> [Float] {
         
         guard inputs.count == self.dimension[layerIndex] else {
-            throw MindError.InvalidAnswerError("Invalid number of outputs given in answer. Expected: \(self.dimension[layerIndex])")
+            throw SwiftMindError.InvalidAnswerError("Invalid number of outputs given in answer. Expected: \(self.dimension[layerIndex])")
         }
         
         var output = [Float](repeating: 0, count: inputs.count)
@@ -82,6 +83,12 @@ public final class SwiftMind {
         
         return output;
     }
+    
+    public func backProp(target: [Float]){
+        
+    }
+    
+    // MARK: Private helpers
     
     private func applyActivation(result: [Float]) -> [Float]{
         

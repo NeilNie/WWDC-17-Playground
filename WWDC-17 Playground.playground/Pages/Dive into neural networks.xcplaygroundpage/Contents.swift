@@ -6,17 +6,16 @@ import PlaygroundSupport
 /*:
  # Neural networks and machine learning
  */
-
 /*:
  ## Welcome!
  */
 var numbers = "1, 2, 3, 4"
 /*:
-  You can probably easily recognize those numbers above. We has humans can do this everyday, at any moment accurately. Imagine if we can create a program that can allow computers to do the same. This problems seems simple, "Neil, we are just telling the machines to read 10 numbers!".
+ You can probably easily recognize those numbers above. We has humans can do this everyday, at any moment accurately. Imagine if we can create a program that can allow computers to do the same. This problems seems simple, "Neil, we are just telling the machines to read 10 numbers!".
  
  After a couple of decades of machine learning research, scientist came to the surprising conclusion that it's extremely difficult to do this. Scientist in the past often ended up with tens of thousands of lines of code for computer vision, which is hard to maintain and limited to certain cases.
  
-- Important: What humans can do easily is difficult for machine, tasks that are hard for us is relatively simple for machines. This is better known as the Moravec's Paradox.
+ - Important: What humans can do easily is difficult for machine, tasks that are hard for us is relatively simple for machines. This is better known as the Moravec's Paradox.
  */
 var handwriting = UIImage.init(named: "MNIST_data.png");
 /*:
@@ -30,9 +29,9 @@ var handwriting = UIImage.init(named: "MNIST_data.png");
  - Forward feeding
  - Back propagation
  - Let's recognize numbers
-    - Training data set
-    - Training the neural network
-    - Recognize handwritten digits.
+ - Training data set
+ - Training the neural network
+ - Recognize handwritten digits.
  */
 /*:
  ## Introduction: what's a neural networks
@@ -53,7 +52,7 @@ var neuralNetwork = UIImage(named: "simple_nn.png")
 /*:
  ## Forward Feeding
  
- The first thing that any neural network has to do is to make some predictions, or return some outputs. This process is quite simple. Let's use the `neuralNetwork` image above as an example. 
+ The first thing that any neural network has to do is to make some predictions, or return some outputs. This process is quite simple. Let's use the `neuralNetwork` image above as an example.
  
  First, the neural network recieves some input, let's call it [x] (the matrix of x). [x]  is a 1 by 2 matrix with value of 1 and 0.
  */
@@ -107,6 +106,27 @@ var backprop = UIImage(named: "nnbp.png")
  
  This might sound complicated, however, if we know the error for the output layer, then everything before that will fall into its place. Like I stated in the beginning, the output layer error is `(calculated - desired) * activationDerivative(calculated)` . The error before that
  */
+/*
+var outputLayerError = [Float]()
+var desired = [0.0, 0.0]
+var hiddenLayerError = [Float]()
+
+// Calculate output errors
+
+for (outputIndex, result) in output2.grid.enumerated() {
+    outputLayerError[outputIndex] = NNMath.sigmoidPrime(y: Float(result)) * Float(desired[outputIndex] - result)
+}
+
+vDSP_mmul(outputLayerError, 1,
+          float(a: w2.grid), 1,
+          &hiddenLayerError, 1,
+          vDSP_Length(1), vDSP_Length(3), vDSP_Length(2))
+
+for (errorIndex, error) in hiddenLayerError.enumerated() {
+    hiddenLayerError[errorIndex] = NNMath.sigmoidPrime(y: Float(output1.grid[errorIndex])) * error
+}*/
+
+
 var hiddenLayerOutput = [Float].init()
 var calculated = [Float].init()
 var outputLayerError = [Float].init()
@@ -119,22 +139,26 @@ for (outputIndex, result) in calculated.enumerated() {
     outputLayerError[outputIndex] = NNMath.sigmoidPrime(y: Float(result)) * (desired[outputIndex] - result)
 }
 
-// Calculate hidden errors
-vDSP_mmul(outputLayerError, 1,
-          weights, 1,
-          &hiddenLayerError, 1,
-          vDSP_Length(1), vDSP_Length(3), vDSP_Length(2))
-for (errorIndex, error) in hiddenLayerError.enumerated() {
-    hiddenLayerError[errorIndex] = NNMath.sigmoidPrime(y: Float(hiddenLayerOutput[errorIndex])) * error
-}
-
+//// Calculate hidden errors
+//vDSP_mmul(outputLayerError, 1,
+//          weights, 1,
+//          &hiddenLayerError, 1,
+//          vDSP_Length(1), vDSP_Length(3), vDSP_Length(2))
+//for (errorIndex, error) in hiddenLayerError.enumerated() {
+//    hiddenLayerError[errorIndex] = NNMath.sigmoidPrime(y: Float(hiddenLayerOutput[errorIndex])) * error
+//}
 /*:
  ## Let's recongize numbers
  */
+var handWritingView = HandwritingView(frame: CGRect(x: 0, y: 0, width: 480, height: 600))
+PlaygroundPage.current.liveView = handWritingView;
+
+//var mind = SwiftMind(dimension: [2, 3, 2], learningRate: 0.5, momentum: 0.5)
+//mind.predict(inputs: [1.0, 1.0])
+
 
 /*
  ## Building a framework
  
- */
-
+*/
 
