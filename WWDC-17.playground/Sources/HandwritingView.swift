@@ -18,17 +18,13 @@ public class HandwritingView: UIView {
     var snapshotBox = UIView()
     
     var lastPoint = CGPoint.zero
-    var red: CGFloat = 0.0
-    var green: CGFloat = 0.0
-    var blue: CGFloat = 0.0
     var brushWidth: CGFloat = 18
-    var opacity: CGFloat = 1.0
     var swiped = false
     
     var boundingBox: CGRect?
     var drawing = false
     var timer = Timer()
-    var network: Mind!
+    var network: SwiftMind!
     
     public override init(frame: CGRect) {
         
@@ -100,13 +96,13 @@ public class HandwritingView: UIView {
 
         context?.setLineCap(CGLineCap.round)
         context?.setLineWidth(brushWidth)
-        context?.setStrokeColor(red: red, green: green, blue: blue, alpha: 1.0)
+        context?.setStrokeColor(red: 0, green: 0, blue: 0, alpha: 1.0)
         context?.setBlendMode(CGBlendMode.normal)
 
         context?.strokePath()
 
         tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        tempImageView.alpha = opacity
+        tempImageView.alpha = 1.0
         UIGraphicsEndImageContext()
         
     }
@@ -159,7 +155,7 @@ public class HandwritingView: UIView {
         
         UIGraphicsBeginImageContext(mainImageView.frame.size)
         mainImageView.image?.draw(in: CGRect(x: 0, y: 0, width: self.tempImageView.frame.size.width, height: self.tempImageView.frame.size.height), blendMode: CGBlendMode.normal, alpha: 1.0)
-        tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: self.tempImageView.frame.size.width, height: self.tempImageView.frame.size.height), blendMode: CGBlendMode.normal, alpha: opacity)
+        tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: self.tempImageView.frame.size.width, height: self.tempImageView.frame.size.height), blendMode: CGBlendMode.normal, alpha: 1.0)
         mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
