@@ -11,6 +11,5 @@ import Foundation
 print("Hello, World!")
 
 var trainer = Trainer()
-
-trainer.trainNetwork(batchSize: 5000, accuracy: 0.95)
-
+trainer.trainNetwork(batchSize: 5000, accuracy: 0.93)
+Storage.write(Storage.getFileURL("mindData_t"), trainer.swiftMind)

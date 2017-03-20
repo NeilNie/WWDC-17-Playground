@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 import Accelerate
 
 public enum SwiftMindError: Error {
@@ -62,7 +61,7 @@ public final class SwiftMind {
         }
     }
     
-    public func predict(inputs: [Float]) throws{
+    public func predict(inputs: [Float]) throws -> [Float]! {
         
         results = [[Float]]()
         
@@ -72,6 +71,7 @@ public final class SwiftMind {
         for i in 0..<self.dimension.count-1{
             self.results.append(try! self.forwardFeed(layerIndex: i, inputs: self.results[i], weights: self.weights[i]))
         }
+        return results.last!
     }
     
     public func forwardFeed(layerIndex: Int, inputs: [Float], weights: [Float]) throws -> [Float] {

@@ -29,15 +29,15 @@ final public class Trainer {
 //        let trainLablelsData = try! Data(contentsOf: Bundle.main.url(forResource: "train-labels-idx1-ubyte", withExtension: nil)!)
 //        let testLablelsData = try! Data(contentsOf: Bundle.main.url(forResource: "t10k-labels-idx1-ubyte", withExtension: nil)!)
     
-        let trainImagesData = try! Data(contentsOf: NSURL.fileURL(withPath: "/Users/YongyangNie/Desktop/MNIST Training Test/MNIST-TrainingData/train-images-idx3-ubyte"))
-        let testImagesData = try! Data(contentsOf: NSURL.fileURL(withPath: "/Users/YongyangNie/Desktop/MNIST Training Test/MNIST-TrainingData/t10k-images-idx3-ubyte"))
-        let trainLablelsData = try! Data(contentsOf: NSURL.fileURL(withPath: "/Users/YongyangNie/Desktop/MNIST Training Test/MNIST-TrainingData/train-labels-idx1-ubyte"))
-        let testLablelsData = try! Data(contentsOf: NSURL.fileURL(withPath: "/Users/YongyangNie/Desktop/MNIST Training Test/MNIST-TrainingData/t10k-labels-idx1-ubyte"))
+        let trainImagesData = try! Data(contentsOf: NSURL.fileURL(withPath: "/Users/Neil/Desktop/WWDC-17-Playground/MNIST Training Test/MNIST-TrainingData/train-images-idx3-ubyte"))
+        let testImagesData = try! Data(contentsOf: NSURL.fileURL(withPath: "/Users/Neil/Desktop/WWDC-17-Playground/MNIST Training Test/MNIST-TrainingData/t10k-images-idx3-ubyte"))
+        let trainLablelsData = try! Data(contentsOf: NSURL.fileURL(withPath: "/Users/Neil/Desktop/WWDC-17-Playground/MNIST Training Test/MNIST-TrainingData/train-labels-idx1-ubyte"))
+        let testLablelsData = try! Data(contentsOf: NSURL.fileURL(withPath: "/Users/Neil/Desktop/WWDC-17-Playground/MNIST Training Test/MNIST-TrainingData/t10k-labels-idx1-ubyte"))
         
         var imagePosition = 16 // Start after header info
         var labelPosition = 8 // Start after header info
         
-        for imageIndex in 0..<60000 {
+        for imageIndex in 0..<30000 {
             
             if imageIndex % 10_000 == 0 || imageIndex == 60000 - 1 {
                 print("\((imageIndex + 1) * 100 / 60000)%")
@@ -79,6 +79,8 @@ final public class Trainer {
             imagePosition += 784
             labelPosition += 1
         }
+
+        Storage.writeData(url: Storage.getFileURL("MNIST_data"), trainImg: trainImages, testImg: testImages, trainLbl: trainLabels, testLbl: testLabels)
         
         print("Finished, extracted: \(trainImages.count) training images")
         
