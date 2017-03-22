@@ -34,7 +34,11 @@ class Storage {
             let weights = storage["weights"] as? [[Float]] else {
                 return nil
         }
-        let n = SwiftMind.init(size: size, learningRate: learningRate, momentum: momentum, weights: weights)
+        let n = SwiftMind()
+        n.dimension = size
+        n.weights = weights
+        n.learningRate = learningRate
+        n.momentum = momentum
         return n
     }
     

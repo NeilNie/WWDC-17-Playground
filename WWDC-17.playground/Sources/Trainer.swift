@@ -78,8 +78,6 @@ final public class Trainer {
         swiftMind = SwiftMind(size: [784, 35, 10], learningRate: 0.2, momentum: 0.5)
         print("Finished, extracted: \(trainImages.count) training images")
         print("Training in progress, please be patient, it will take around 90 seconds.")
-        
-        //swiftMind = Storage.read(Bundle.main.url(forResource: "mindData_t", withExtension: nil)!)!
     }
 
     public func trainNetwork(batchSize: Int, accuracy: Float){

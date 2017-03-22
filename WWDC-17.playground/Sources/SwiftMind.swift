@@ -61,6 +61,18 @@ public final class SwiftMind {
         }
     }
     
+    public init(){
+        learningRate = 0.00
+        momentum = 0.00
+        dimension = [Int]()
+        
+        weights = [[Float]]()
+        results = [[Float]]()
+        errors = [[Float]]()
+        errorIndices = [[Int]]()
+        resultIndices = [[Int]]()
+    }
+    
     public func predict(inputs: [Float]) throws -> [Float]! {
         
         results = [[Float]]()

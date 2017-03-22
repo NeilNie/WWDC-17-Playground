@@ -18,7 +18,7 @@ public class HandwritingView: UIView {
     var snapshotBox = UIView()
     
     var lastPoint = CGPoint.zero
-    var brushWidth: CGFloat = 18
+    var brushWidth: CGFloat = 22
     var swiped = false
     
     var boundingBox: CGRect?
@@ -37,7 +37,6 @@ public class HandwritingView: UIView {
         self.addSubview(label)
         
         outputLabel = UILabel(frame: CGRect(x: 25, y: 550, width: 200, height: 200))
-        outputLabel.text = "9"
         outputLabel.textAlignment = NSTextAlignment.center
         outputLabel.font = UIFont.init(name: "HelveticaNeue", size: 100)
         outputLabel.textColor = UIColor.black
@@ -45,7 +44,6 @@ public class HandwritingView: UIView {
         
         percentLabel = UILabel.init(frame: CGRect.init(x: 25, y: 710, width: 200, height: 30))
         label.font = UIFont.init(name: "HelveticaNeue-Light", size: 20)
-        percentLabel.text = "98%"
         percentLabel.textColor = UIColor.black
         percentLabel.textAlignment = NSTextAlignment.center
         percentLabel.backgroundColor = UIColor.white
@@ -72,6 +70,9 @@ public class HandwritingView: UIView {
         snapshotBox.layer.borderColor = UIColor.green.cgColor
         snapshotBox.layer.borderWidth = 5.0
         self.addSubview(snapshotBox)
+        
+        network = Storage.read(Bundle.main.url(forResource: "mindData", withExtension: nil)!)
+        print(network.dimension)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -114,7 +115,7 @@ public class HandwritingView: UIView {
         }
         
         if boundingBox == nil {
-            boundingBox = CGRect(x: lastPoint.x - brushWidth / 2 + 25,
+            boundingBox = CGRect(x: lastPoint.x - brushWidth / 2 + 60,
                                       y: lastPoint.y - brushWidth / 2 + 60,
                                       width: brushWidth,
                                       height: brushWidth)
@@ -174,26 +175,19 @@ public class HandwritingView: UIView {
 extension HandwritingView {
     
     public func classifyImage() {
-        print("Classified")
-        // Extract and resize image from drawing canvas
-        /*guard let imageArray = self.scanImage() else {
+
+        guard let imageArray = self.scanImage() else {
             self.clearScreen(sender: nil)
             return
         }
-        do {
-            let output = try self.network.update(inputs: imageArray)
-            let (label, percentage) = self.extractResult(output: output)!
-            outputLabel.text = "\(label) confidence: \(percentage * 100)"
-        } catch {
-            print(error)
-        }
-        */
-        _ = self.scanImage()
+        let result = self.extractResult(output: try! network.predict(inputs: imageArray))
+        outputLabel.text = "\(result?.index ?? 0)"
+        percentLabel.text = "\(result?.value.rounded() ?? 00.0)%"
     }
     
     private func extractResult(output: [Float]) -> (index: Int, value: Double)? {
         let max = output.max()
-        return (output.index(of: max!)!, Double(max! / 1.0))
+        return (output.index(of: max!)!, Double(max! * 100.0))
     }
     
     private func scanImage() -> [Float]? {
@@ -204,7 +198,7 @@ extension HandwritingView {
         // Extract drawing from canvas and remove surrounding whitespace
         let croppedImage = self.cropImage(image: image, toRect: boundingBox!)
         // Scale character to max 20px in either dimension
-        let scaledImage = self.scaleImageToSize(image: croppedImage, maxLength: 20)
+        let scaledImage = self.scaleImageToSize(image: croppedImage, maxLength: 25)
         // Center character in 28x28 white box
         let character = self.addBorderToImage(image: scaledImage)
         
