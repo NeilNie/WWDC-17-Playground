@@ -4,7 +4,7 @@
 //
 //  Created by Yongyang Nie on 3/18/17.
 //  Copyright © 2017 Yongyang Nie. All rights reserved.
-//
+//  This class is written for WWDC 2017 Scholarship application
 
 import Foundation
 

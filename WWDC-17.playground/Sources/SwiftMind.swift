@@ -3,8 +3,8 @@
 //
 //
 //  Created by Yongyang Nie on 3/11/17.
-//
-//
+//  
+//  This class is written for WWDC 2017 Scholarship application
 
 import Foundation
 import Accelerate

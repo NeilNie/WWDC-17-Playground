@@ -21,9 +21,8 @@ let output = [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
  Now, let's create the network with 784 hidden nodes, (28*28), 35 hidden nodes, and ten outputs. Learning rate and momentum below are values that helps the network learn. Details about them are beyond the scope of this playground.
  */
 var neuralNetwork = SwiftMind(size: [784, 35, 10], learningRate: 0.2, momentum: 0.5)
-
 /*:
- ## Trainer
+ ## The Trainer
  
  To orangize the training process, I created the `Trainer` class that will extract training and testing data, create a neural network, and train the network.
  */
@@ -34,12 +33,7 @@ let trainer = Trainer()
   Inside the constructor, Trainer will extract the training and testing data, and also create a `[784, 35, 10]` neural network. In the console below, you can find details about the init process and training process.
  */
 trainer.trainNetwork(batchSize: 1000, accuracy: 0.90)
-
-let methodFinish = Date()
-let executionTime = methodFinish.timeIntervalSince(methodStart)
-print("Execution time: \(executionTime)")
 /*:
  This method is where all the magic happens. First, I specified how many times to train per each batch. Secondly, I set a accuracy value to tell to network to stop training when the accuracy is above 95%. The method will return an array of floats which represents the training progress of the network. It will help us visualize the network's improvement over time. Sit back and enjoy.
  */
-
 //: [Next](@next)

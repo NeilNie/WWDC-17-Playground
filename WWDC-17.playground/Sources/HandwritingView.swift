@@ -3,7 +3,7 @@
 //  DrawPad
 //
 //  Copyright (c) 2017 Neil Nie. All rights reserved.
-//
+//  This class is written for WWDC 2017 Scholarship application
 
 import UIKit
 
@@ -38,7 +38,7 @@ public class HandwritingView: UIView {
         
         outputLabel = UILabel(frame: CGRect(x: 25, y: 550, width: 200, height: 200))
         outputLabel.textAlignment = NSTextAlignment.center
-        outputLabel.font = UIFont.init(name: "HelveticaNeue", size: 100)
+        outputLabel.font = UIFont.init(name: "HelveticaNeue", size: 130)
         outputLabel.textColor = UIColor.black
         outputLabel.backgroundColor = UIColor.white
         
@@ -54,7 +54,7 @@ public class HandwritingView: UIView {
         processedImageView.backgroundColor = UIColor.white
         self.addSubview(processedImageView)
         
-        clearButton = UIButton(frame: CGRect.init(x: 330, y: 23, width: 60, height: 30))
+        clearButton = UIButton(frame: CGRect.init(x: 330, y: 23, width: 80, height: 50))
         clearButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         clearButton.setTitle("Clear", for: UIControlState.normal)
         clearButton.addTarget(self, action: #selector(clearScreen(sender:)), for: UIControlEvents.touchUpInside)
@@ -109,21 +109,26 @@ public class HandwritingView: UIView {
     }
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         
-        swiped = false
-        if let touch = touches.first {
-            lastPoint = touch.location(in: tempImageView)
+        let touch = touches.first
+        if Double((touch?.location(in: self).y)!) < 50.0 || Double((touch?.location(in: self).y)!) > 530.0 {
+            let alert = UIAlertController(title: "Opps", message: "Please write on the canvas", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            //self.present(alert, animated: true, completion: nil)
+        }else{
+            swiped = false
+            lastPoint = (touch?.location(in: tempImageView))!
+            
+            if boundingBox == nil {
+                boundingBox = CGRect(x: lastPoint.x - brushWidth / 2 + 60,
+                                     y: lastPoint.y - brushWidth / 2 + 60,
+                                     width: brushWidth,
+                                     height: brushWidth)
+            }
+            snapshotBox.frame = boundingBox!
+            
+            timer.invalidate()
+            drawing = true
         }
-        
-        if boundingBox == nil {
-            boundingBox = CGRect(x: lastPoint.x - brushWidth / 2 + 60,
-                                      y: lastPoint.y - brushWidth / 2 + 60,
-                                      width: brushWidth,
-                                      height: brushWidth)
-        }
-        snapshotBox.frame = boundingBox!
-        
-        timer.invalidate()
-        drawing = true
     }
     
     override open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -142,9 +147,9 @@ public class HandwritingView: UIView {
             self.updateRect(rect: &boundingBox!, minX: nil, maxX: lastPoint.x + brushWidth + 20, minY: nil, maxY: nil)
         }
         if lastPoint.y < boundingBox!.minY {
-            self.updateRect(rect: &boundingBox!, minX: nil, maxX: nil, minY: lastPoint.y + 40 - self.brushWidth - 20, maxY: nil)
+            self.updateRect(rect: &boundingBox!, minX: nil, maxX: nil, minY: lastPoint.y - self.brushWidth, maxY: nil)
         } else if lastPoint.y > boundingBox!.maxY {
-            self.updateRect(rect: &boundingBox!, minX: nil, maxX: nil, minY: nil, maxY: lastPoint.y + 40 + self.brushWidth + 20)
+            self.updateRect(rect: &boundingBox!, minX: nil, maxX: nil, minY: nil, maxY: lastPoint.y + self.brushWidth)
         }
         self.snapshotBox.frame = boundingBox!
     }
@@ -229,7 +234,7 @@ extension HandwritingView {
     }
     
     private func scaleImageToSize(image: UIImage, maxLength: CGFloat) -> UIImage {
-        let size = CGSize(width: min(20 * image.size.width / image.size.height, 20), height: min(20 * image.size.height / image.size.width, 20))
+        let size = CGSize(width: min(23 * image.size.width / image.size.height, 23), height: min(23 * image.size.height / image.size.width, 23))
         let newRect = CGRect(x: 0, y: 0, width: size.width, height: size.height).integral
         UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
         let context = UIGraphicsGetCurrentContext()

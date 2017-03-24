@@ -1,7 +1,7 @@
 import UIKit
 import PlaygroundSupport
 /*:
- ## Reconigze Handwritten digits
+ # Reconigze Handwritten digits
  
  It's time to put our work into action, let's recongize some digits. I created a HandwritingView class, which can be found in the playground timeline. Write a digit on the screen and the result will be displayed in the bottom. Click clear to clear the canvas.
  */
