@@ -1,6 +1,5 @@
 //
-//  ViewController.swift
-//  DrawPad
+//  HandwritingView.swift
 //
 //  Copyright (c) 2017 Neil Nie. All rights reserved.
 //  This class is written for WWDC 2017 Scholarship application
@@ -64,8 +63,8 @@ public class HandwritingView: UIView {
         mainImageView = UIImageView(frame: CGRect.init(x: 25, y: 60, width: Double(frame.size.width - 50), height: 470))
         tempImageView = UIImageView(frame: CGRect.init(x: 25, y: 60, width: Double(frame.size.width - 20), height: 470))
         mainImageView.backgroundColor = UIColor.white
-        self.addSubview(self.mainImageView)
-        self.addSubview(self.tempImageView)
+        self.addSubview(mainImageView)
+        self.addSubview(tempImageView)
         
         snapshotBox.layer.borderColor = UIColor.green.cgColor
         snapshotBox.layer.borderWidth = 5.0

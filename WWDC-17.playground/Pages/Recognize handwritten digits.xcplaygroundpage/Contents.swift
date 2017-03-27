@@ -8,7 +8,7 @@ import PlaygroundSupport
 var view = HandwritingView(frame: CGRect.init(x: 0, y: 0, width: 500, height: 780))
 PlaygroundPage.current.liveView = view
 /*:
- HandwritingView class include a SwiftMind instance. The neural network is loaded from the stored file, mindData (can be found in the Resources folder). HandwritingView will convert your written digit into a 28*28 image which can be passed in to the neural network. 
+ HandwritingView class include a SwiftMind instance. The neural network is loaded from the stored file, mindData (can be found in the Resources folder). HandwritingView will convert your written digit into a 28*28 image which can be passed in to the neural network.
  
- You might realize that sometimes the software fails to recognize some digits, even though the network can recongize more than 95% of the testing data. 
+ You might realize that sometimes the software fails to recognize some digits, even though the network can recongize more than 95% of the testing data.
  */

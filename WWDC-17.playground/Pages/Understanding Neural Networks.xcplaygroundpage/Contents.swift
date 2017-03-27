@@ -1,9 +1,9 @@
-//:  [Table of Contents](Table%20Of%20Contents) | [Understanding Neural Networks](Understanding%20Neural%20Networks)
+//:  [Table of Contents](Table%20of%20contents) | [Next](Training%20a%20neural%20network) | [Previous](Diving%20into%20neural%20networks)
 
 import Foundation
 import UIKit
 /*:
- # What's a neural networks
+ # What's a neural network
  */
 var neuralNetwork = UIImage(named: "simple_nn.png")
 /*:
@@ -18,7 +18,7 @@ var neuralNetwork = UIImage(named: "simple_nn.png")
  */
 
 /*:
- # Forward Feed
+ ## Forward Feed
  
  The first thing that any neural network has to do is to make some predictions, or return some outputs. The process can be summerized into two steps:
  - Take the previous layer output, multiply it by the weights
@@ -46,7 +46,7 @@ var output = activate(x: z)
 var visualization = UIImage(named: "ff.png")
 
 /*:
- # Backpropagation
+ ## Backpropagation
 
  Congratulations, now, our network can make some predictions. However, the predictions might be off from the desired output. Don't worry, we can go back and change the weights to make the prediction closer to the desired result. 
  
@@ -99,7 +99,7 @@ hiddenLayerError = outputLayerError * sigmoidPrime(x: hiddenLayerOutput) * trans
  Now, we have calculated all the error, let's subtract that from the current weights. Hopefully, it will bring down the errors of the neural network.
  */
 /*:
- # Training
+ ## Training
  */
 
-//:  [Table of Contents](Table%20Of%20Contents) | [Understanding Neural Networks](Understanding%20Neural%20Networks)
+//:  [Table of Contents](Table%20of%20contents) | [Next](Training%20a%20neural%20network) | [Previous](Diving%20into%20neural%20networks)

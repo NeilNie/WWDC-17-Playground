@@ -134,7 +134,7 @@ public final class SwiftMind {
                       vDSP_Length(1), vDSP_Length(self.dimension[index]), vDSP_Length(self.dimension[index + 1]))
             
             for (i, err) in error.enumerated() {
-                error[i] = NNMath.sigmoidDerivative(self.results[index][i]) * err
+                error[i] = NNMath.sigmoidPrime(y: self.results[index][i]) * err
             }
             errors.insert(error, at: 0)
         }
