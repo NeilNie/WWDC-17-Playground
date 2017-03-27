@@ -54,7 +54,7 @@ public class HandwritingView: UIView {
         processedImageView.backgroundColor = UIColor.white
         self.addSubview(processedImageView)
         
-        clearButton = UIButton(frame: CGRect.init(x: 330, y: 23, width: 80, height: 50))
+        clearButton = UIButton(frame: CGRect.init(x: 330, y: 13, width: 80, height: 50))
         clearButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         clearButton.setTitle("Clear", for: UIControlState.normal)
         clearButton.addTarget(self, action: #selector(clearScreen(sender:)), for: UIControlEvents.touchUpInside)
@@ -147,9 +147,9 @@ public class HandwritingView: UIView {
             self.updateRect(rect: &boundingBox!, minX: nil, maxX: lastPoint.x + brushWidth + 20, minY: nil, maxY: nil)
         }
         if lastPoint.y < boundingBox!.minY {
-            self.updateRect(rect: &boundingBox!, minX: nil, maxX: nil, minY: lastPoint.y - self.brushWidth, maxY: nil)
+            self.updateRect(rect: &boundingBox!, minX: nil, maxX: nil, minY: lastPoint.y - self.brushWidth + 10, maxY: nil)
         } else if lastPoint.y > boundingBox!.maxY {
-            self.updateRect(rect: &boundingBox!, minX: nil, maxX: nil, minY: nil, maxY: lastPoint.y + self.brushWidth)
+            self.updateRect(rect: &boundingBox!, minX: nil, maxX: nil, minY: nil, maxY: lastPoint.y + self.brushWidth + 60)
         }
         self.snapshotBox.frame = boundingBox!
     }
