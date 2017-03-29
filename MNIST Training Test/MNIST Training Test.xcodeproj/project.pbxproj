@@ -11,6 +11,7 @@
 		004D24D11E7DF26400782719 /* NNMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D24CF1E7DF26400782719 /* NNMath.swift */; };
 		004D24D21E7DF26400782719 /* SwiftMind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D24D01E7DF26400782719 /* SwiftMind.swift */; };
 		004D24D41E7DF28000782719 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004D24D31E7DF28000782719 /* Trainer.swift */; };
+		28A191DF1E8A89CF00B9E1EB /* Learner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A191DE1E8A89CF00B9E1EB /* Learner.swift */; };
 		28F2EE961E7E265900775E43 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2EE951E7E265900775E43 /* Storage.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		004D24D01E7DF26400782719 /* SwiftMind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMind.swift; sourceTree = "<group>"; };
 		004D24D31E7DF28000782719 /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		004D24DA1E7E0BFC00782719 /* MNIST-TrainingData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "MNIST-TrainingData"; sourceTree = SOURCE_ROOT; };
+		28A191DE1E8A89CF00B9E1EB /* Learner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Learner.swift; sourceTree = "<group>"; };
 		28F2EE951E7E265900775E43 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 				004D24CF1E7DF26400782719 /* NNMath.swift */,
 				004D24D01E7DF26400782719 /* SwiftMind.swift */,
 				004D24D31E7DF28000782719 /* Trainer.swift */,
+				28A191DE1E8A89CF00B9E1EB /* Learner.swift */,
 				28F2EE951E7E265900775E43 /* Storage.swift */,
 				004D24DA1E7E0BFC00782719 /* MNIST-TrainingData */,
 			);
@@ -138,6 +141,7 @@
 				004D24D21E7DF26400782719 /* SwiftMind.swift in Sources */,
 				004D24D41E7DF28000782719 /* Trainer.swift in Sources */,
 				004D24C91E7DF25200782719 /* main.swift in Sources */,
+				28A191DF1E8A89CF00B9E1EB /* Learner.swift in Sources */,
 				004D24D11E7DF26400782719 /* NNMath.swift in Sources */,
 				28F2EE961E7E265900775E43 /* Storage.swift in Sources */,
 			);

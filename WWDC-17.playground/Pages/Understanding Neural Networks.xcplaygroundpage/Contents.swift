@@ -100,6 +100,6 @@ hiddenLayerError = outputLayerError * sigmoidPrime(x: hiddenLayerOutput) * trans
  */
 /*:
  ## Training
+ Similar to almost all machine learning algorithms, neural networks need to be trained in order to return useful results. The process of training is repeating forward feeding and backpropagation until the output of the network reaches a certain threshold. For example, later on, we will train a neural network that can recognize handwritten digits. We will repeat backpropagation, which updates the weights, until the neural network can recognize 95% of the testing datas.
  */
-
 //:  [Table of Contents](Table%20of%20contents) | [Next](Training%20a%20neural%20network) | [Previous](Diving%20into%20neural%20networks)

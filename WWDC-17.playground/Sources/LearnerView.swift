@@ -8,40 +8,46 @@
 
 import UIKit
 
-class LearnerView : UIView{
+public class LearnerView : UIViewController, UITextFieldDelegate {
     
-    var network: SwiftMind!
-    var textField = UITextField()
-    var canvas = UIImageView()
-    var processButton = UIButton()
+    var network : SwiftMind!
+    var textField : UITextField!
+    var canvas : UIImageView!
     
-    public override init(frame: CGRect) {
+    override public func loadView() {
         
-        super.init(frame: frame)
+        let url = Bundle.main.url(forResource: "mindData_learn", withExtension: nil)!
+        network = Storage.read(url)!
         
-        let url = Bundle.main.url(forResource: "MindData_learn", withExtension: nil)!
-        self.network = Storage.read(url)
+        let view = UIView()
+        view.backgroundColor = UIColor.init(red: 247.0 / 255.0, green: 247.0 / 255.0, blue: 247.0 / 255.0, alpha: 1.0)
         
-        backgroundColor = UIColor.init(red: 242.0 / 255.0, green: 242.0 / 255.0, blue: 242.0 / 255.0, alpha: 1.0)
-        canvas = UIImageView(frame: CGRect.init(x: 25, y: 60, width: Double(frame.size.width - 50), height: 470))
+        canvas = UIImageView(frame: CGRect.init(x: 23, y: 60, width: 330, height: 330))
         canvas.backgroundColor = UIColor.white
-        self.addSubview(canvas)
+        view.addSubview(canvas)
         
-        processButton = UIButton(frame: CGRect.init(x: 330, y: 13, width: 80, height: 50))
-        processButton.setTitleColor(UIColor.black, for: UIControlState.normal)
-        processButton.setTitle("Clear", for: UIControlState.normal)
-        processButton.addTarget(self, action: #selector(generate(sender:)), for: UIControlEvents.touchUpInside)
-        self.addSubview(processButton)
+        textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "Please enter a number"
+        view.addSubview(textField)
         
-        textField = UITextField(frame: CGRect.init(x: 0, y: 0, width: 60, height: 30))
-        self.addSubview(textField)
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.view = view
+        
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        let margins = view.layoutMarginsGuide
+        NSLayoutConstraint.activate([
+            textField.topAnchor.constraint(equalTo: margins.topAnchor, constant: 20),
+            textField.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            textField.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+        ])
+        
+        textField.addTarget(self, action: #selector(updateLabel), for: UIControlEvents.editingChanged)
     }
     
-    func generate(sender: UIButton?) {
-        self.canvas.image = self.generateCharacter(digit: Int(self.textField.text!)!)
+    func updateLabel() {
+        if !(self.textField.text?.isEmpty)! {
+            self.canvas.image = self.generateCharacter(digit: Int(self.textField.text!)!)
+        }
     }
 }
 
