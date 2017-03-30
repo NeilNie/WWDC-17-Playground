@@ -141,14 +141,14 @@ public class HandwritingView: UIView {
         }
 
         if lastPoint.x < boundingBox!.minX {
-            self.updateRect(rect: &boundingBox!, minX: lastPoint.x - brushWidth - 20, maxX: nil, minY: nil, maxY: nil)
+            self.updateRect(rect: &boundingBox!, minX: lastPoint.x - brushWidth - 50, maxX: nil, minY: nil, maxY: nil)
         } else if lastPoint.x > boundingBox!.maxX {
-            self.updateRect(rect: &boundingBox!, minX: nil, maxX: lastPoint.x + brushWidth + 20, minY: nil, maxY: nil)
+            self.updateRect(rect: &boundingBox!, minX: nil, maxX: lastPoint.x + brushWidth + 50, minY: nil, maxY: nil)
         }
         if lastPoint.y < boundingBox!.minY {
             self.updateRect(rect: &boundingBox!, minX: nil, maxX: nil, minY: lastPoint.y - self.brushWidth + 10, maxY: nil)
         } else if lastPoint.y > boundingBox!.maxY {
-            self.updateRect(rect: &boundingBox!, minX: nil, maxX: nil, minY: nil, maxY: lastPoint.y + self.brushWidth + 60)
+            self.updateRect(rect: &boundingBox!, minX: nil, maxX: nil, minY: nil, maxY: lastPoint.y + self.brushWidth + 50)
         }
         self.snapshotBox.frame = boundingBox!
     }

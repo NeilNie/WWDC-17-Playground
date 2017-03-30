@@ -5,6 +5,7 @@
         <page name='Training a neural network'/>
         <page name='Recognize handwritten digits'/>
         <page name='Diving into neural networks'/>
+        <page name='Finale'/>
         <page name='Understanding neural networks'/>
     </pages>
 </playground>

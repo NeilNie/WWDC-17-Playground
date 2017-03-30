@@ -98,7 +98,7 @@ final public class Trainer {
             trainLabels = result.labels
             trainImages = result.images
         }
-        print("Hooray, training is finished with accuracy of: \(rate)")
+        print("Hooray, training is finished with accuracy of: \(rate*100)%")
     }
     
     public func shuffle(array1: [[Float]], array2: [UInt8]) throws -> (images: [[Float]], labels: [UInt8]) {
