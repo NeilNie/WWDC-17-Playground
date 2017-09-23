@@ -24,27 +24,26 @@ var neuralNetwork = UIImage(named: "simple_nn.png")
  
  The two step process above is repeated until some output is yield. Here is an example:
  
- First, the neural network recieves some input, let's call it matrix [x] with values 1 and 0.
+ First, the neural network recieves the input matrix [input]
  */
-let x =  Matrix([[1.0, 1.0]])
+let input =  Matrix([[1.0, 1.0]])
 /*:
- Connecting the input layer to the hidden layer are some weights.
+ Connecting the input layer to the hidden layer are some randomly generaated weights.
  */
 let weights = Matrix([[0.683, 0.2373, 0.2613],
                       [-0.1892, 0.2593, 0.5824]])
 /*:
- Multiply the input matrix `[x]` with the weight matrix `[w1]`. Let's call the result `[z]`.
+ Multiply `[input]` with `[w1]`, let's call the result `[product]`.
  */
-let z = x * weights
+let product = input * weights
 /*:
- Apply the activation function to every value in z, this's the output for that layer.
+ Apply the activation function to every value in [product], this's the output values for that layer.
  - Note: 
- The activation is the sigmoid function. f(x) = 1/(1-e^x)
+ The activation is the sigmoid function. `f(x) = 1/(1+e^-x)`
  */
-var output = activate(x: z)
+var output = activate(x: product)
 
 var visualization = UIImage(named: "ff.png")
-
 /*:
  ## Backpropagation
  
@@ -98,6 +97,6 @@ hiddenLayerError = outputLayerError * sigmoidPrime(x: hiddenLayerOutput) * trans
  */
 /*:
  ## Training
- Similar to almost all machine learning algorithms, neural networks need to be trained in order to return useful results. The process of training is repeating forward feeding and backpropagation until the output of the network is very similar to the desired output. Later on, we will train a neural network that can recognize handwritten digits. We will repeat backpropagation, which updates the weights, until the neural network can recognize 95% of the testing datas.
+ Similar to almost all machine learning algorithms, neural networks need to be trained in order to return useful results. The process of training is repeating forward feeding and backpropagation until the output of the network is very similar to the desired output. Later on, we will train a neural network that can recognize handwritten digits. We will repeat backpropagation, which updates the weights, until the neural network can recognize 95% of the testing data.
  */
 //:  [Table of Contents](Table%20of%20contents) | [Next](Training%20a%20neural%20network) | [Previous](Diving%20into%20neural%20networks)

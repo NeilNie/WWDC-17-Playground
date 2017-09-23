@@ -6,9 +6,7 @@ import PlaygroundSupport
  # Finale
  */
  /*:
- Thank you for staying with me throughtout this journey. We have explored the advantages of neural networks, how to create one, and use one to recognize handwritings. 
- 
-  You might realize that sometimes the software fails to recognize some digits, even though the network can recongize more than 95% of the testing data.
+ Thank you for staying with me throughtout this journey. We have explored the advantages of neural networks, how to create one, and use one to recognize handwritings.
  
  To further illustrate the power of neural networks and how cool they are, I created handwriting learner view that can generate images of numbers instead of recognizing them. Instead of giving the network pixels, I give the network
  */

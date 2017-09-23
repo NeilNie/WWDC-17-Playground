@@ -34,11 +34,9 @@ var neuralNetwork = SwiftMind(size: [784, 35, 10], learningRate: 0.2, momentum: 
  - Monitor the accuracy.
  */
 let trainer = Trainer()
-/*:
-  Inside the constructor, Trainer will extract the training and testing data, and create a `[784, 35, 10]` neural network.
- */
+
 trainer.trainNetwork(batchSize: 1000, accuracy: 0.90)
 /*:
- This method is where all the magic happens. First, I specified how many times to train per each epoch. The training data will be divided up into 1000 image batches. I also set a threshold to tell to network to stop training when the accuracy is above 90%. After training, it will log the progress in the console. Sit back and enjoy.
+ This method is where all the magic happens. First, I specified how many times to train per each epoch. The training data will be divided up into 1000 image batches. Accuracy parameter is the threshold when the network will stop training. After training, it will log the progress in the console. Sit back and enjoy. ☕️
  */
 //:  [Table of Contents](Table%20of%20contents) | [Next](Recognize%20handwritten%20digits) | [Previous](Understanding%20neural%20networks)

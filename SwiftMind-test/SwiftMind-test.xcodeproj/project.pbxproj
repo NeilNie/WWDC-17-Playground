@@ -12,8 +12,6 @@
 		006325E71E78B3770099E478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 006325E51E78B3770099E478 /* Main.storyboard */; };
 		006325E91E78B3770099E478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 006325E81E78B3770099E478 /* Assets.xcassets */; };
 		006325EC1E78B3770099E478 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 006325EA1E78B3770099E478 /* LaunchScreen.storyboard */; };
-		006325F71E78B3770099E478 /* SwiftMind_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006325F61E78B3770099E478 /* SwiftMind_testTests.swift */; };
-		006326021E78B3770099E478 /* SwiftMind_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006326011E78B3770099E478 /* SwiftMind_testUITests.swift */; };
 		006326101E78B37E0099E478 /* SwiftMind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063260F1E78B37E0099E478 /* SwiftMind.swift */; };
 		006326121E78B3B60099E478 /* NNMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006326111E78B3B60099E478 /* NNMath.swift */; };
 /* End PBXBuildFile section */
@@ -44,11 +42,7 @@
 		006325EB1E78B3770099E478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		006325ED1E78B3770099E478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		006325F21E78B3770099E478 /* SwiftMind-testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftMind-testTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		006325F61E78B3770099E478 /* SwiftMind_testTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMind_testTests.swift; sourceTree = "<group>"; };
-		006325F81E78B3770099E478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		006325FD1E78B3770099E478 /* SwiftMind-testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftMind-testUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		006326011E78B3770099E478 /* SwiftMind_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMind_testUITests.swift; sourceTree = "<group>"; };
-		006326031E78B3770099E478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0063260F1E78B37E0099E478 /* SwiftMind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMind.swift; sourceTree = "<group>"; };
 		006326111E78B3B60099E478 /* NNMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNMath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,8 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				006325E01E78B3770099E478 /* SwiftMind-test */,
-				006325F51E78B3770099E478 /* SwiftMind-testTests */,
-				006326001E78B3770099E478 /* SwiftMind-testUITests */,
 				006325DF1E78B3770099E478 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,24 +103,6 @@
 				006325ED1E78B3770099E478 /* Info.plist */,
 			);
 			path = "SwiftMind-test";
-			sourceTree = "<group>";
-		};
-		006325F51E78B3770099E478 /* SwiftMind-testTests */ = {
-			isa = PBXGroup;
-			children = (
-				006325F61E78B3770099E478 /* SwiftMind_testTests.swift */,
-				006325F81E78B3770099E478 /* Info.plist */,
-			);
-			path = "SwiftMind-testTests";
-			sourceTree = "<group>";
-		};
-		006326001E78B3770099E478 /* SwiftMind-testUITests */ = {
-			isa = PBXGroup;
-			children = (
-				006326011E78B3770099E478 /* SwiftMind_testUITests.swift */,
-				006326031E78B3770099E478 /* Info.plist */,
-			);
-			path = "SwiftMind-testUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,7 +253,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				006325F71E78B3770099E478 /* SwiftMind_testTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				006326021E78B3770099E478 /* SwiftMind_testUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

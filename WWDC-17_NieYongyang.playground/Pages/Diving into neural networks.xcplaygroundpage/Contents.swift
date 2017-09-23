@@ -4,13 +4,15 @@
 import UIKit
 import PlaygroundSupport
 /*:
- # Neural networks and machine learning
+ # Diving into neural networks 🏊
  */
 var numbers = "1, 2, 3, 4"
 /*:
- You can probably easily recognize those numbers above. We as humans can do this effortlessly and accurately. Imagine if we can create a program that can allow computers to do the same. This problem seems simple, "Neil, we are just telling the machines to read 10 numbers!".
+ You can probably easily recognize those numbers above. We as humans can do this effortlessly and accurately. Imagine if we can create a program that can allow computers to do the same. This problem seems simple, what's so hard about making a program to recognize digits?
  
- After a couple of decades of machine learning research, scientist came to the surprising conclusion that it's extremely difficult for machines to recongnize handwritings. Tasks such as computer vision, self-driving cars are extremely hard to implement.
+ After a couple of decades of machine learning research, scientist came to the surprising conclusion that it's extremely difficult for machines to recongnize handwritings. One of the first solution comes to mind is to program rules to characterize those digits. But, this was a narrow approach. Once rules add up, it's hard to debug and maintain.
+ 
+ Computer scienctists realized that tasks such as computer 👀, self-driving 🚙 are extremely hard to implement.
  
  - Important: What humans can do easily is difficult for machine, tasks that are hard for us is relatively simple for machines. This is better known as the Moravec's Paradox.
  */
