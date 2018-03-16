@@ -8,13 +8,13 @@ import UIKit
 
 public class HandwritingView: UIView {
     
-    var mainImageView: UIImageView!
-    var tempImageView: UIImageView!
-    var processedImageView : UIImageView!
-    var percentLabel : UILabel!
-    var outputLabel: UILabel!
-    var clearButton : UIButton!
-    var snapshotBox = UIView()
+    public var mainImageView: UIImageView!
+    public var tempImageView: UIImageView!
+    public var processedImageView : UIImageView!
+    public var percentLabel : UILabel!
+    public var outputLabel: UILabel!
+    public var clearButton : UIButton!
+    public var snapshotBox = UIView()
     
     var lastPoint = CGPoint.zero
     var brushWidth: CGFloat = 22
@@ -29,39 +29,41 @@ public class HandwritingView: UIView {
         
         super.init(frame: frame)
         
-        let label = UILabel(frame: CGRect(x: 25, y: 20, width: 200, height: 30))
+        let label = UILabel(frame: CGRect(x: 25, y: 20, width: 230, height: 30))
         label.text = "Please write a number"
-        label.font = UIFont.init(name: "HelveticaNeue-Light", size: 20)
+        label.font = UIFont.init(name: "HelveticaNeue-Medium", size: 20)
         label.textColor = UIColor.black
         self.addSubview(label)
         
-        outputLabel = UILabel(frame: CGRect(x: 25, y: 550, width: 200, height: 200))
+        let viewLength = self.frame.width / 3 + 35
+        
+        outputLabel = UILabel(frame: CGRect(x: 25, y: 520, width: viewLength, height: viewLength))
         outputLabel.textAlignment = NSTextAlignment.center
         outputLabel.font = UIFont.init(name: "HelveticaNeue", size: 130)
         outputLabel.textColor = UIColor.black
         outputLabel.backgroundColor = UIColor.white
         
-        percentLabel = UILabel.init(frame: CGRect.init(x: 25, y: 710, width: 200, height: 30))
-        label.font = UIFont.init(name: "HelveticaNeue-Light", size: 20)
-        percentLabel.textColor = UIColor.black
-        percentLabel.textAlignment = NSTextAlignment.center
-        percentLabel.backgroundColor = UIColor.white
-        self.addSubview(outputLabel)
-        self.addSubview(percentLabel)
-        
-        processedImageView = UIImageView.init(frame: CGRect(x: 277, y: 550, width: 200, height: 200))
+        processedImageView = UIImageView.init(frame: CGRect(x: 212, y: 520, width: viewLength, height: viewLength))
         processedImageView.backgroundColor = UIColor.white
         self.addSubview(processedImageView)
         
-        clearButton = UIButton(frame: CGRect.init(x: 330, y: 13, width: 80, height: 50))
+        percentLabel = UILabel.init(frame: CGRect.init(x: 25, y: 650, width: viewLength, height: 30))
+        label.font = UIFont.init(name: "HelveticaNeue-Bold", size: 20)
+        percentLabel.textColor = UIColor.black
+        percentLabel.textAlignment = NSTextAlignment.center
+        percentLabel.backgroundColor = UIColor.clear
+        self.addSubview(outputLabel)
+        self.addSubview(percentLabel)
+        
+        clearButton = UIButton(frame: CGRect.init(x: self.frame.width - 90, y: 13, width: 80, height: 50))
         clearButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         clearButton.setTitle("Clear", for: UIControlState.normal)
         clearButton.addTarget(self, action: #selector(clearScreen(sender:)), for: UIControlEvents.touchUpInside)
         self.addSubview(clearButton)
         
         backgroundColor = UIColor.init(red: 242.0 / 255.0, green: 242.0 / 255.0, blue: 242.0 / 255.0, alpha: 1.0)
-        mainImageView = UIImageView(frame: CGRect.init(x: 25, y: 60, width: Double(frame.size.width - 50), height: 470))
-        tempImageView = UIImageView(frame: CGRect.init(x: 25, y: 60, width: Double(frame.size.width - 20), height: 470))
+        mainImageView = UIImageView(frame: CGRect.init(x: 25, y: 60, width: Double(frame.size.width - 50), height: 450))
+        tempImageView = UIImageView(frame: CGRect.init(x: 25, y: 60, width: Double(frame.size.width - 50), height: 450))
         mainImageView.backgroundColor = UIColor.white
         self.addSubview(mainImageView)
         self.addSubview(tempImageView)

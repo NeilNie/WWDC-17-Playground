@@ -114,8 +114,8 @@ final public class Learner {
             let j = Int(arc4random_uniform(UInt32(array1.count - i))) + i
             if i != j {
                 
-                swap(&images[i], &images[j])
-                swap(&labels[i], &labels[j])
+                images.swapAt(i, j)
+                labels.swapAt(i, j)
             }
         }
         return (images, labels)

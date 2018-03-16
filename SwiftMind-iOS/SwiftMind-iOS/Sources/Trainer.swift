@@ -1,4 +1,4 @@
-//
+ //
 //  SwiftMind.swift
 //
 //
@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum LearnerError: Error {
+enum TrainerError: Error {
     case ShufflingError, TrainingError, TrainingDataError
 }
 
-final public class Learner {
+final public class Trainer {
     
     public var swiftMind : SwiftMind
     var trainImages = [[Float]]()
@@ -75,7 +75,7 @@ final public class Learner {
             labelPosition += 1
         }
         
-        swiftMind = SwiftMind(size: [10, 35, 784], learningRate: 0.2, momentum: 0.5)
+        swiftMind = SwiftMind(size: [784, 35, 10], learningRate: 0.2, momentum: 0.5)
         print("Finished, extracted: \(trainImages.count) training images")
         print("Training in progress, please be patient, it will take around 90 seconds.")
     }
@@ -87,10 +87,10 @@ final public class Learner {
         
         while rate < accuracy {
             for i in 0..<batchSize{
+                _ = try! swiftMind.predict(inputs: self.trainImages[i])
                 var target : [Float] = [Float](repeating: 0, count: 10)
                 target[Int(self.trainLabels[i])] = 1.0
-                _ = try! swiftMind.predict(inputs: target)
-                try! swiftMind.backProp(answers: self.trainImages[i])
+                try! swiftMind.backProp(answers: target)
             }
             rate = self.evaluate(count: 1000)
             print(rate * 100)
@@ -98,7 +98,7 @@ final public class Learner {
             trainLabels = result.labels
             trainImages = result.images
         }
-        print("Hooray, training is finished with accuracy of: \(rate)")
+        print("Hooray, training is finished with accuracy of: \(rate*100)%")
     }
     
     public func shuffle(array1: [[Float]], array2: [UInt8]) throws -> (images: [[Float]], labels: [UInt8]) {
@@ -113,9 +113,8 @@ final public class Learner {
         for i in 0 ..< array1.count {
             let j = Int(arc4random_uniform(UInt32(array1.count - i))) + i
             if i != j {
-                
-                swap(&images[i], &images[j])
-                swap(&labels[i], &labels[j])
+                images.swapAt(i, j)
+                labels.swapAt(i, j)
             }
         }
         return (images, labels)
